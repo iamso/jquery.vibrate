@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Vibrate example</title>
+	<style>
+		body {
+			background: #eee;
+			font: 16px normal 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+		.wrapper {
+			width: 800px;
+			padding: 0 20px 20px;
+			margin: 50px auto;
+			background: #fff;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+		}
+		input {
+			width: 300px;
+			padding: 5px;
+			border: 1px solid #ddd;
+			outline: none;
+		}
+		input:focus {
+			border-color: #aaa;
+		}
+		input.error {
+			background: #ffd0d0;
+			border-color: #ff0000;
+		}
+		#vibrate {
+			display: inline-block;
+			background: #ff0000;
+			color: #fff;
+			padding: 2px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>jQuery Vibrate example</h1>
+		<h3>Controlled Vibration</h3>
+		<p>Click the button to vibrate it.</p>
+		<input type="text" id="input" placeholder="some text">
+		<button id="send">send</button>
+		<h3>Continuous (original behavior)</h3>
+		<div><div id="vibrate">This element</div> vibrates on its own every now and then. (Interval defined by 'frequency')</div>
+		<br>
+		<h3>Setup</h3>
+		<pre>
+// Setup with default options
+$(element).vibrate({
+    speed:		30,
+	duration:	2000,
+	frequency:	5000,
+	spread:		3,
+	continuous: false
+});
+		</pre>
+	</div>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="jquery.vibrate.js"></script>
+	<script>
+		$(function(){
+			// Controll Vibration
+			$('#send').click(function(){
+				var vibrateConfig = {
+				    speed:        20, 
+				    duration:    600,
+				    spread: 4
+			  };			  
+				$('#input').addClass('error').vibrate(vibrateConfig);
+			});
+			
+			// Continuous Vibration
+			var vibrateConfig = {
+			    continuous:   true
+		  };			  
+			$('#vibrate').vibrate(vibrateConfig);
+			
+		});
+	</script>
+</body>
+</html>
